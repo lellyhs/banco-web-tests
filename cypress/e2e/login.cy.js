@@ -3,13 +3,14 @@ describe('Login', () => {
   beforeEach(() => {
     //Arrange
     cy.visit('http://localhost:4000')
-    cy.screenshot('apos-visitar-pagina')
   })
 
   it('Login com dados válidos deve permitir entrada no sistema', () => {
     //Act
-    cy.get('#username').type('julio.lima')
-    cy.get('#senha').type('123456')
+    cy.fixture('credenciais').then((credenciais) => {
+      cy.get('#username').type(credenciais.valida.usuario)
+      cy.get('#senha').type(credenciais.valida.senha)
+    })
     cy.screenshot('apos-preencher-dados-validos')
     cy.get('#login-section > .btn').click()
     cy.screenshot('apos-clicar-em-entrar')
@@ -19,11 +20,14 @@ describe('Login', () => {
 
   it('Login com dados inválidos deve apresentar mensagem de erro', () => {
     //Act
-    cy.get('#username').type('julio.lima')
-    cy.get('#senha').type('654321')
-    //cy.get('#login-section > .btn').click()
+    cy.fixture('credenciais').then((credenciais) => {
+      cy.get('#username').type(credenciais.invalida.usuario)
+      cy.get('#senha').type(credenciais.invalida.senha)
+    })
+    cy.screenshot('apos-preencher-dados-invalidos')
     cy.contains('button', 'Entrar').click()
     //Assert
-    cy.get('.toast').should('be.visible').should('have.text', 'Erro no login. Tente novamente.')  })
+    cy.get('.toast').should('be.visible').should('have.text', 'Erro no login. Tente novamente.')
+  })
 
 })
