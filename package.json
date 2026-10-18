@@ -4,7 +4,7 @@
   "description": "Testes automatizados para o sistema bancário web com cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --expose URL=http://localhost:4000"
+    "test": "cypress run"
   },
   "repository": {
     "type": "git",
