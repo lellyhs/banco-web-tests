@@ -149,4 +149,5 @@ vite.config.ts.timestamp-*
 .turbo
 
 #cypress
-\cypress\screenshots
+cypress/screenshots/
+cypress/reports/html/

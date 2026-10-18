@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/lellyhs/banco-web-tests#readme",
   "devDependencies": {
-    "cypress": "^16.2.0"
+    "cypress": "^16.2.0",
+    "cypress-mochawesome-reporter": "^5.0.0"
   }
 }
